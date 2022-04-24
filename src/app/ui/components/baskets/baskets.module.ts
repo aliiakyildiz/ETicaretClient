@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"",component:BasketsComponent}
+      { path: "", component: BasketsComponent }
     ])
   ]
 })

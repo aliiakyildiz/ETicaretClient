@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from './product/product.component';
-import { ProductModule } from './product/product.module';
+import { ProductsModule } from './products/products.module';
 import { OrderModule } from './order/order.module';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -12,7 +11,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
   declarations: [],
   imports: [
     CommonModule,
-    ProductModule,
+    ProductsModule,
     OrderModule,
     CustomerModule,
     DashboardModule

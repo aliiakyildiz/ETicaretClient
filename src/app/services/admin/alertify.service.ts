@@ -5,27 +5,28 @@ declare var alertify: any;
   providedIn: 'root'
 })
 export class AlertifyService {
-
   constructor() { }
 
-  // message(message: string, messageType: MessageType, position: Position, delay: number = 3, dismissOthers: boolean = false) 
-  message(message: string, options : Partial<AlertifyOptions>){
-    alertify.set('notifier', 'delay',options.delay);
+  // message(message: string, messageType: MessageType, position: Position, delay: number = 3, dismissOthers: boolean = false)
+  message(message: string, options: Partial<AlertifyOptions>) {
+    alertify.set('notifier', 'delay', options.delay);
     alertify.set('notifier', 'position', options.position);
-    const msg = alertify[options.messageType](message)//if ya da switch ile messageType'ı kontrol etmek yerine JavaScript indexer kullandım.
-    if (options.dismissOthers) {
-      msg.dismissOthers();
-    }
+    const msj = alertify[options.messageType](message);
+    if (options.dismissOthers)
+      msj.dismissOthers();
+
   }
+
   dismiss() {
     alertify.dismissAll();
   }
 }
+
 export class AlertifyOptions {
-  messageType: MessageType =MessageType.Message;
-  position: Position =Position.BottomLeft;
-  delay: number =3;
-  dismissOthers: boolean =false;
+  messageType: MessageType = MessageType.Message;
+  position: Position = Position.BottomLeft;
+  delay: number = 3;
+  dismissOthers: boolean = false;
 }
 
 export enum MessageType {
@@ -35,11 +36,12 @@ export enum MessageType {
   Success = "success",
   Warning = "warning"
 }
+
 export enum Position {
   TopCenter = "top-center",
   TopRight = "top-right",
   TopLeft = "top-left",
   BottomRight = "bottom-right",
   BottomCenter = "bottom-center",
-  BottomLeft = "bottom-left",
+  BottomLeft = "bottom-left"
 }
