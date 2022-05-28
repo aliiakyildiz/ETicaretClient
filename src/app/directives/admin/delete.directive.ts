@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from 'src/app/base/base.component';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
-import { ProductService } from 'src/app/service/common/models/product.service';
+import { ProductService } from 'src/app/services/models/product.service';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
