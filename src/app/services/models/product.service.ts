@@ -61,5 +61,13 @@ export class ProductService {
     successCallBack();
     return images;
   }
-
+  async deleteImage(id: string, imageId: string, successCallBack?: () => void) {
+    const deleteObservable = this.httpClientService.delete({
+      action: "deleteproductimage",
+      controller: "products",
+      queryString: `imageid=${imageId}`
+    }, id)
+    await firstValueFrom(deleteObservable);
+    successCallBack();
+  }
 }
