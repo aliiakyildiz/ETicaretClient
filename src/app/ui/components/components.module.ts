@@ -9,6 +9,7 @@ import { RegisterModule } from './register/register.module';
 
 @NgModule({
   declarations: [
+
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
-import { Create_Product } from 'src/app/contracts/create_product';
-import { ProductService } from 'src/app/services/models/product.service';
-import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
-import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
+import { BaseComponent, SpinnerType } from '../../../../base/base.component';
+import { Create_Product } from '../../../../contracts/create_product';
+import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
+import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
+import { ProductService } from '../../../../services/common/models/product.service';
 
 @Component({
   selector: 'app-create',
@@ -19,8 +21,8 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-@Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
 
+  @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
 
   create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
     this.showSpinner(SpinnerType.BallAtom);
