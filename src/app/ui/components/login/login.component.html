@@ -10,11 +10,18 @@
       <label for="password">Şifre</label>
       <input #txtPassword type="password" class="form-control" id="password" placeholder="Şifre">
     </div>
+<br>
+    <div>
+      <div style="float:left ; ">
+        <asl-google-signin-button></asl-google-signin-button>
+      </div>
+      <div style="float:left; margin-left: 10px;">
+        <img src="../../../../assets/facebook.png" style=" width: 30px; height: 30px; cursor: pointer;" (click)="facebookLogin()">
+      </div>
+    </div>
 
-
-    <asl-google-signin-button></asl-google-signin-button>
-
-    <br />
+    <br>
+    <br>
     <button style="margin: top 5px;" type="submit" class="btn btn-primary"
       (click)="login(txtUserNameOrEmail.value,txtPassword.value)">Giriş Yap</button>
 
