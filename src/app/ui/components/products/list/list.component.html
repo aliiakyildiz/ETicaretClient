@@ -15,6 +15,12 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
+                    <a class="page-link">
+                        {{currentPageNo}}/{{totalPageCount}}
+                    </a>
+                </li>
+
+                <li class="page-item">
                     <a class="page-link" [routerLink]="['/products', currentPageNo -1 <= 0 ? 1 :currentPageNo -1]">
                         Önceki
                     </a>
