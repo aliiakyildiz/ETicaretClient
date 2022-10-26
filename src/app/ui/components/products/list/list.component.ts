@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BaseUrl } from 'src/app/contracts/base_url';
 import { List_Product } from 'src/app/contracts/list_product';
+import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
@@ -10,16 +12,19 @@ import { ProductService } from 'src/app/services/common/models/product.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private fileService: FileService) { }
 
   currentPageNo: number;
   totalProductCount: number;
   totalPageCount: number;
   pageSize: number = 12;
   pageList: number[] = [];
-
+  baseUrl: BaseUrl;
   products: List_Product[];
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.baseUrl = await this.fileService.getBaseStorageUrl();
+
     this.activatedRoute.params.subscribe(async params => {
       this.currentPageNo = parseInt(params["pageNo"] ?? 1);
 
@@ -30,7 +35,26 @@ export class ListComponent implements OnInit {
         errorMessage => {
 
         });
+
       this.products = data.products;
+
+      this.products = this.products.map<List_Product>(p => {
+        const listProduct: List_Product = {
+          id: p.id,
+          createdDate: p.createdDate,
+          imagePath: `${p.productImageFiles.length ? p.productImageFiles.find(p => p.showCase).path : ""}`,
+          name: p.name,
+          price: p.price,
+          stock: p.stock,
+          updatedDate: p.updatedDate,
+          productImageFiles: p.productImageFiles
+        };
+
+        return listProduct;
+      });
+      debugger
+
+
       this.totalProductCount = data.totalProductCount;
       this.totalPageCount = Math.ceil(this.totalProductCount / this.pageSize);
 
